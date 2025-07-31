@@ -1,0 +1,814 @@
+<!doctype html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Zentrale Maisonette-Wohnung zu vermieten - Karlsruhe</title>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        />
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family:
+                    system-ui,
+                    -apple-system,
+                    BlinkMacSystemFont,
+                    "Segoe UI",
+                    Roboto,
+                    sans-serif;
+                line-height: 1.6;
+                color: #333;
+            }
+
+            .container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 20px;
+            }
+
+            /* Header */
+            header {
+                background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+                color: white;
+                padding: 3rem 0;
+                text-align: center;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+                margin-bottom: 1rem;
+                font-weight: 600;
+            }
+
+            .subtitle {
+                font-size: 1.2rem;
+                margin-bottom: 2rem;
+                opacity: 0.9;
+            }
+
+            .availability {
+                background: rgba(255, 255, 255, 0.2);
+                padding: 1rem 2rem;
+                border-radius: 25px;
+                display: inline-block;
+                font-weight: 500;
+            }
+
+            /* Price Section */
+            .price-section {
+                background: #e74c3c;
+                color: white;
+                padding: 2rem 0;
+                text-align: center;
+            }
+
+            .price-tag {
+                font-size: 2rem;
+                font-weight: 600;
+            }
+
+            /* Main Content */
+            main {
+                padding: 3rem 0;
+            }
+
+            .section {
+                margin-bottom: 4rem;
+            }
+
+            .section h2 {
+                font-size: 2rem;
+                margin-bottom: 2rem;
+                color: #2c3e50;
+                text-align: center;
+            }
+
+            /* Photo Gallery */
+            .gallery {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 1rem;
+                margin-bottom: 2rem;
+            }
+
+            .gallery-item {
+                position: relative;
+                height: 250px;
+                border-radius: 8px;
+                overflow: hidden;
+                cursor: pointer;
+                border: 1px solid #ddd;
+            }
+
+            .gallery-item img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .gallery-item .caption {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: rgba(0, 0, 0, 0.8);
+                color: white;
+                padding: 1rem;
+                font-weight: 500;
+            }
+
+            /* Features */
+            .features {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 2rem;
+            }
+
+            .feature-card {
+                background: #f8f9fa;
+                padding: 2rem;
+                border-radius: 8px;
+                text-align: center;
+                border: 1px solid #e9ecef;
+            }
+
+            .feature-icon {
+                font-size: 2.5rem;
+                color: #3498db;
+                margin-bottom: 1rem;
+            }
+
+            .feature-card h3 {
+                font-size: 1.2rem;
+                margin-bottom: 1rem;
+                color: #2c3e50;
+            }
+
+            /* Details */
+            .details {
+                background: #f8f9fa;
+                padding: 2rem;
+                border-radius: 8px;
+                border: 1px solid #e9ecef;
+            }
+
+            .details-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 2rem;
+            }
+
+            .detail-item {
+                display: flex;
+                align-items: center;
+                margin-bottom: 1rem;
+                padding: 0.5rem 0;
+            }
+
+            .detail-item i {
+                font-size: 1.2rem;
+                color: #3498db;
+                margin-right: 1rem;
+                width: 20px;
+            }
+
+            /* Transit Lines */
+            .transit-section {
+                background: #2c3e50;
+                color: white;
+                padding: 3rem 2rem;
+                border-radius: 8px;
+            }
+
+            .transit-section h2 {
+                color: white;
+                margin-bottom: 2rem;
+            }
+
+            .transit-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 1.5rem;
+                margin-top: 2rem;
+            }
+
+            .transit-item {
+                background: rgba(255, 255, 255, 0.1);
+                padding: 1.5rem;
+                border-radius: 8px;
+                text-align: center;
+            }
+
+            .transit-lines {
+                margin-top: 1rem;
+            }
+
+            .line-badge {
+                display: inline-block;
+                padding: 0.3rem 0.8rem;
+                margin: 0.2rem;
+                border-radius: 15px;
+                font-weight: 600;
+                font-size: 0.9rem;
+            }
+
+            /* Transit line colors */
+            .line-4 {
+                background-color: #f1c40f;
+                color: #000;
+            } /* Yellow */
+            .line-2 {
+                background-color: #3498db;
+                color: #fff;
+            } /* Blue */
+            .line-3 {
+                background-color: #8b4513;
+                color: #fff;
+            } /* Brown */
+            .line-s2 {
+                background-color: #9b59b6;
+                color: #fff;
+            } /* Purple */
+            .line-s1 {
+                background-color: #27ae60;
+                color: #fff;
+            } /* Green */
+            .line-s5 {
+                background-color: #e91e63;
+                color: #fff;
+            } /* Pink */
+            .line-1 {
+                background-color: #e74c3c;
+                color: #fff;
+            } /* Red */
+
+            /* Location */
+            .location-features {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 1rem;
+                margin-top: 2rem;
+            }
+
+            .location-item {
+                background: rgba(255, 255, 255, 0.1);
+                padding: 1.5rem;
+                border-radius: 8px;
+                text-align: center;
+            }
+
+            /* Contact */
+            .contact {
+                background: #34495e;
+                color: white;
+                padding: 3rem 2rem;
+                border-radius: 8px;
+                text-align: center;
+            }
+
+            .contact h2 {
+                color: white;
+                margin-bottom: 1rem;
+            }
+
+            .email-link {
+                color: #3498db;
+                text-decoration: none;
+                font-weight: 600;
+                font-size: 1.2rem;
+            }
+
+            .email-link:hover {
+                text-decoration: underline;
+            }
+
+            /* Modal */
+            .modal {
+                display: none;
+                position: fixed;
+                z-index: 1000;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.9);
+            }
+
+            .modal-content {
+                margin: auto;
+                display: block;
+                width: 80%;
+                max-width: 800px;
+                max-height: 80%;
+                border-radius: 8px;
+            }
+
+            .close {
+                position: absolute;
+                top: 15px;
+                right: 35px;
+                color: #f1f1f1;
+                font-size: 40px;
+                font-weight: bold;
+                cursor: pointer;
+            }
+
+            .close:hover {
+                color: #3498db;
+            }
+
+            /* Responsive */
+            @media (max-width: 768px) {
+                h1 {
+                    font-size: 2rem;
+                }
+
+                .price-tag {
+                    font-size: 1.5rem;
+                }
+
+                .gallery {
+                    grid-template-columns: 1fr;
+                }
+
+                .features {
+                    grid-template-columns: 1fr;
+                }
+
+                .details-grid {
+                    grid-template-columns: 1fr;
+                }
+
+                .transit-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+
+            /* Floating Email Button */
+            .floating-email {
+                position: fixed;
+                bottom: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                z-index: 999;
+                background: #e74c3c;
+                color: white;
+                padding: 20px 40px;
+                border-radius: 60px;
+                box-shadow: 0 8px 30px rgba(231, 76, 60, 0.4);
+                text-decoration: none;
+                font-weight: 700;
+                font-size: 20px;
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                transition: all 0.3s ease;
+                border: 3px solid #fff;
+                min-width: 300px;
+                justify-content: center;
+            }
+
+            .floating-email:hover {
+                background: #c0392b;
+                transform: translateX(-50%) translateY(-5px) scale(1.05);
+                box-shadow: 0 12px 40px rgba(231, 76, 60, 0.6);
+                color: white;
+                text-decoration: none;
+            }
+
+            .floating-email i {
+                font-size: 24px;
+            }
+
+            @media (max-width: 768px) {
+                .floating-email {
+                    bottom: 15px;
+                    padding: 15px 25px;
+                    font-size: 16px;
+                    min-width: 280px;
+                    border-radius: 40px;
+                }
+
+                .floating-email i {
+                    font-size: 20px;
+                }
+            }
+
+            @media (max-width: 480px) {
+                .floating-email {
+                    min-width: 250px;
+                    padding: 12px 20px;
+                    font-size: 14px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <h1>Zentrale Maisonette-Wohnung</h1>
+                <p class="subtitle">
+                    Helle, gemütliche Wohnung mit Balkon in bester Lage
+                </p>
+                <div class="availability">
+                    <i class="fas fa-calendar-alt"></i> Verfügbar ab 1.
+                    September
+                </div>
+            </div>
+        </header>
+
+        <section class="price-section">
+            <div class="container">
+                <div class="price-tag">1.100€ Kaltmiete + ca. 300€ NK</div>
+            </div>
+        </section>
+
+        <main>
+            <div class="container">
+                <!-- Photo Gallery -->
+                <section class="section">
+                    <h2>Impressionen der Wohnung</h2>
+                    <div class="gallery">
+                        <div
+                            class="gallery-item"
+                            onclick="openModal('img/living-room.jpeg')"
+                        >
+                            <img src="img/living-room.jpeg" alt="Wohnzimmer" />
+                            <div class="caption">
+                                Geräumiger Wohn-/Essbereich
+                            </div>
+                        </div>
+                        <div
+                            class="gallery-item"
+                            onclick="openModal('img/kitchen.jpeg')"
+                        >
+                            <img src="img/kitchen.jpeg" alt="Küche" />
+                            <div class="caption">Moderne Einbauküche</div>
+                        </div>
+                        <div
+                            class="gallery-item"
+                            onclick="openModal('img/bedroom.jpeg')"
+                        >
+                            <img src="img/bedroom.jpeg" alt="Schlafzimmer" />
+                            <div class="caption">Großes Schlafzimmer</div>
+                        </div>
+                        <div
+                            class="gallery-item"
+                            onclick="openModal('img/bedroom-2.jpeg')"
+                        >
+                            <img src="img/bedroom-2.jpeg" alt="Einbauschrank" />
+                            <div class="caption">Zweites Zimmer</div>
+                        </div>
+                        <div
+                            class="gallery-item"
+                            onclick="openModal('img/office.jpeg')"
+                        >
+                            <img
+                                src="img/office.jpeg"
+                                alt="Büro/Arbeitszimmer"
+                            />
+                            <div class="caption">Büro/Arbeitszimmer</div>
+                        </div>
+                        <div
+                            class="gallery-item"
+                            onclick="openModal('img/top-floor.jpeg')"
+                        >
+                            <img
+                                src="img/top-floor.jpeg"
+                                alt="Oberes Geschoss"
+                            />
+                            <div class="caption">Oberes Geschoss</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Features -->
+                <section class="section">
+                    <h2>Highlights der Wohnung</h2>
+                    <div class="features">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <h3>Maisonette-Wohnung</h3>
+                            <p>
+                                Zwei Etagen mit cleverer Raumaufteilung für
+                                optimales Wohngefühl
+                            </p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-utensils"></i>
+                            </div>
+                            <h3>Vollausgestattete Küche</h3>
+                            <p>
+                                Amerikanischer Kühlschrank, Spülmaschine und
+                                Herd mit Ofen
+                            </p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-sun"></i>
+                            </div>
+                            <h3>Helle Räume & Balkon</h3>
+                            <p>
+                                Große Fensterfront und eigener Balkon für
+                                entspannte Stunden
+                            </p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-bath"></i>
+                            </div>
+                            <h3>Renoviertes Bad</h3>
+                            <p>
+                                Komplett renoviert im Jahr 2024 mit moderner
+                                Ausstattung
+                            </p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-couch"></i>
+                            </div>
+                            <h3>Möbliert</h3>
+                            <p>
+                                Sofort bezugsfertig - komplett möbliert
+                                einziehen
+                            </p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-car"></i>
+                            </div>
+                            <h3>Stellplatz verfügbar</h3>
+                            <p>
+                                Parkplatz im gegenüberliegenden Gebäude für nur
+                                75€/Monat
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Details -->
+                <section class="section">
+                    <h2>Wohnungsdetails</h2>
+                    <div class="details">
+                        <div class="details-grid">
+                            <div>
+                                <h3 style="margin-bottom: 1rem; color: #2c3e50">
+                                    Grunddaten
+                                </h3>
+                                <div class="detail-item">
+                                    <i class="fas fa-expand-arrows-alt"></i>
+                                    <span
+                                        ><strong>Wohnfläche:</strong> 65
+                                        m²</span
+                                    >
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-door-open"></i>
+                                    <span><strong>Zimmer:</strong> 3</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span><strong>Baujahr:</strong> 1988</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-key"></i>
+                                    <span
+                                        ><strong>Verfügbar ab:</strong> 1.
+                                        September</span
+                                    >
+                                </div>
+                            </div>
+                            <div>
+                                <h3 style="margin-bottom: 1rem; color: #2c3e50">
+                                    Kosten
+                                </h3>
+                                <div class="detail-item">
+                                    <i class="fas fa-euro-sign"></i>
+                                    <span
+                                        ><strong>Kaltmiete:</strong> 1.100
+                                        €</span
+                                    >
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-calculator"></i>
+                                    <span
+                                        ><strong>Nebenkosten:</strong> ca. 300
+                                        €</span
+                                    >
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-car"></i>
+                                    <span
+                                        ><strong>Stellplatz:</strong> 75 €
+                                        (optional)</span
+                                    >
+                                </div>
+                            </div>
+                            <div>
+                                <h3 style="margin-bottom: 1rem; color: #2c3e50">
+                                    Ausstattung
+                                </h3>
+                                <div class="detail-item">
+                                    <i class="fas fa-th-large"></i>
+                                    <span>Laminat & Fliesen</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-thermometer-half"></i>
+                                    <span>Zentralheizung mit Fernwärme</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-elevator"></i>
+                                    <span>Fahrstuhl vorhanden</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-archive"></i>
+                                    <span>Keller vorhanden</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Transit -->
+                <section class="section">
+                    <div class="transit-section">
+                        <h2>Perfekte Verkehrsanbindung</h2>
+                        <p
+                            style="
+                                text-align: center;
+                                margin-bottom: 1rem;
+                                font-size: 1.1rem;
+                            "
+                        >
+                            Europaplatz nur 2 Minuten entfernt - beste
+                            ÖPNV-Anbindung
+                        </p>
+
+                        <div class="transit-grid">
+                            <div class="transit-item">
+                                <i
+                                    class="fas fa-subway"
+                                    style="font-size: 2rem; margin-bottom: 1rem"
+                                ></i>
+                                <h4>Straßenbahn am Europaplatz</h4>
+                                <div class="transit-lines">
+                                    <span class="line-badge line-4"
+                                        >Linie 4</span
+                                    >
+                                    <span class="line-badge line-2"
+                                        >Linie 2</span
+                                    >
+                                    <span class="line-badge line-3"
+                                        >Linie 3</span
+                                    >
+                                </div>
+                            </div>
+
+                            <div class="transit-item">
+                                <i
+                                    class="fas fa-train"
+                                    style="font-size: 2rem; margin-bottom: 1rem"
+                                ></i>
+                                <h4>S-Bahn am Europaplatz</h4>
+                                <div class="transit-lines">
+                                    <span class="line-badge line-s2">S2</span>
+                                    <span class="line-badge line-s1"
+                                        >S1/S11</span
+                                    >
+                                    <span class="line-badge line-s5"
+                                        >S5/S51</span
+                                    >
+                                    <span class="line-badge line-1"
+                                        >Linie 1</span
+                                    >
+                                </div>
+                            </div>
+
+                            <div class="transit-item">
+                                <i
+                                    class="fas fa-walking"
+                                    style="font-size: 2rem; margin-bottom: 1rem"
+                                ></i>
+                                <h4>Zu Fuß erreichbar</h4>
+                                <p>
+                                    Ludwigsplatz: 200m<br />Hauptbahnhof: 20 Min
+                                </p>
+                            </div>
+
+                            <div class="transit-item">
+                                <i
+                                    class="fas fa-bicycle"
+                                    style="font-size: 2rem; margin-bottom: 1rem"
+                                ></i>
+                                <h4>Mit dem Fahrrad</h4>
+                                <p>
+                                    Hauptbahnhof: 10 Min<br />Carsharing nebenan
+                                </p>
+                            </div>
+
+                            <div class="transit-item">
+                                <i
+                                    class="fas fa-shopping-basket"
+                                    style="font-size: 2rem; margin-bottom: 1rem"
+                                ></i>
+                                <h4>Einkaufen & Alltag</h4>
+                                <p>
+                                    Bäcker & Geschäfte<br />des täglichen
+                                    Bedarfs ringsum
+                                </p>
+                            </div>
+
+                            <div class="transit-item">
+                                <i
+                                    class="fas fa-gavel"
+                                    style="font-size: 2rem; margin-bottom: 1rem"
+                                ></i>
+                                <h4>Bundesgerichte</h4>
+                                <p>In unmittelbarer Nähe<br />zur Wohnung</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Contact -->
+                <section class="section">
+                    <div class="contact">
+                        <h2>Interesse geweckt?</h2>
+                        <p style="font-size: 1.2rem; margin: 1rem 0">
+                            Kontaktieren Sie mich für eine Besichtigung oder
+                            weitere Informationen
+                        </p>
+                        <div style="margin: 2rem 0">
+                            <i
+                                class="fas fa-envelope"
+                                style="margin-right: 0.5rem"
+                            ></i>
+                            <a
+                                href="mailto:kranichsm@aol.com"
+                                class="email-link"
+                                >kranichsm@aol.com</a
+                            >
+                            <br />
+                            Sibylle Kranich
+                        </div>
+                        <p style="font-size: 1rem; opacity: 0.8">
+                            Schreiben Sie mir gerne eine E-Mail mit Ihren Fragen
+                            oder Ihrem Interesse an einer Besichtigung.
+                        </p>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- Modal -->
+        <div id="imageModal" class="modal" onclick="closeModal()">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="modalImage" />
+        </div>
+
+        <!-- Floating Email Button -->
+        <a href="mailto:kranichsm@aol.com" class="floating-email">
+            <i class="fas fa-envelope"></i>
+            Sibylle Kranich
+            kranichsm@aol.com
+        </a>
+
+        <script>
+            // Modal functionality
+            function openModal(imageSrc) {
+                const modal = document.getElementById("imageModal");
+                const modalImg = document.getElementById("modalImage");
+                modal.style.display = "block";
+                modalImg.src = imageSrc;
+            }
+
+            function closeModal() {
+                document.getElementById("imageModal").style.display = "none";
+            }
+
+            // Close modal with ESC key
+            document.addEventListener("keydown", function (event) {
+                if (event.key === "Escape") {
+                    closeModal();
+                }
+            });
+
+            // Email click tracking
+            document
+                .querySelector(".email-link")
+                .addEventListener("click", function () {
+                    console.log("Email contact clicked");
+                });
+        </script>
+    </body>
+</html>
